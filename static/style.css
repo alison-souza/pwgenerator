@@ -1,0 +1,253 @@
+:root {
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --text: #0f1720;
+  --muted: #5b6166;
+  --accent: #2b7a78;
+  --accent-2: #9fd3c7;
+  --success: #16a34a;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  margin: 48px auto;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(13, 30, 34, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(13, 30, 34, 0.12);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.card-head h1 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+.theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.controls .row {
+  margin: 12px 0;
+}
+input[type="range"] {
+  width: 100%;
+  margin-top: 8px;
+}
+#lengthValue {
+  margin-left: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 12px;
+  margin: 12px 0;
+}
+.grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+.btn {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.12s ease, opacity 0.12s;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  color: white;
+  box-shadow: 0 6px 18px rgba(43, 122, 120, 0.12);
+}
+.btn.outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.output input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9eb;
+  font-size: 16px;
+  margin-top: 8px;
+  color: var(--text);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* ======================
+      SENHA GERADA
+   ====================== */
+#passwordOutput.filled {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent-2);
+}
+
+/* ======================
+        STRENGTH
+   ====================== */
+.strength {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+.strength-bar {
+  flex: 1;
+  height: 12px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.strength-bar .fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.25s ease;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+}
+.strength-label {
+  min-width: 90px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+/* ======================
+        DARK MODE
+   ====================== */
+.dark {
+  --bg: #061218;
+  --card: #071b1e;
+  --text: #000000;
+  --muted: #9fbfb8;
+  --accent: #6ad0be;
+  --accent-2: #2bb39d;
+  --success: #34d399;
+  --danger: #fb7185;
+}
+
+body.dark {
+  background: #001219;
+}
+
+/* ======================
+   TEXTO DA SENHA NO DARK MODE (campo é claro)
+   ====================== */
+body.dark #passwordOutput {
+  color: #000; /* texto preto no dark mode */
+  background: #ffffff; /* mantém campo claro */
+  border-color: #cccccc;
+}
+
+body.dark #passwordOutput::placeholder {
+  color: #444; /* placeholder cinza escuro */
+}
+
+body.dark #passwordOutput.filled {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent-2);
+}
+
+/* ======================
+      DARK SWITCH
+   ====================== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ddd;
+  border-radius: 24px;
+  transition: 0.2s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.switch input:checked + .slider {
+  background: var(--accent);
+}
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* ======================
+      RESPONSIVO
+   ====================== */
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    margin: 20px;
+    padding: 18px;
+  }
+}

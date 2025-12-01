@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gerador de Senhas — Espaço Vip</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <main class="card">
+      <header class="card-head">
+        <h1>Gerador de Senhas</h1>
+        <div class="theme-toggle">
+          <label class="switch">
+            <input type="checkbox" id="darkToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </header>
+
+      <section class="controls">
+        <div class="row">
+          <label for="length"
+            >Tamanho: <strong id="lengthValue">12</strong></label
+          >
+          <input type="range" id="length" min="4" max="40" value="12" />
+        </div>
+
+        <div class="grid">
+          <label
+            ><input type="checkbox" id="upper" checked /> Letras
+            Maiúsculas</label
+          >
+          <label
+            ><input type="checkbox" id="lower" checked /> Letras
+            Minúsculas</label
+          >
+          <label><input type="checkbox" id="digits" checked /> Números</label>
+          <label><input type="checkbox" id="symbols" checked /> Símbolos</label>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" class="btn primary">Gerar Senha</button>
+          <button id="copyBtn" class="btn outline" disabled>Copiar</button>
+        </div>
+
+        <div class="output">
+          <input
+            id="passwordOutput"
+            type="text"
+            readonly
+            placeholder="Sua senha aparecerá aqui"
+          />
+        </div>
+
+        <div class="strength">
+          <div class="strength-bar" id="strengthBar">
+            <div class="fill" id="strengthFill"></div>
+          </div>
+          <div class="strength-label" id="strengthLabel">—</div>
+        </div>
+
+        <p class="note">
+          Dica: use senhas longas e diferentes para cada serviço. Não salve em
+          texto simples.
+        </p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
